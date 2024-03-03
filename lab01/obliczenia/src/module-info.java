@@ -1,0 +1,3 @@
+module obliczenia {
+    exports obliczeniaP;
+}

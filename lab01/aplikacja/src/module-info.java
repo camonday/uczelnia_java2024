@@ -1,0 +1,3 @@
+module aplikacja {
+    requires obliczenia;
+}
