@@ -1,11 +1,12 @@
 package obliczeniaP;
 
 import java.io.*;
+import java.security.NoSuchAlgorithmException;
 import java.util.zip.*;
 
 public class Zipper {
 
-    public Zipper(String entryPath, String exitPath) throws IOException {
+    public Zipper(String entryPath, String exitPath) throws IOException, NoSuchAlgorithmException {
         String sourceFile = entryPath;
         File fileToZip = new File(sourceFile);
         exitPath = exitPath + "/" + fileToZip.getName();
@@ -25,9 +26,9 @@ public class Zipper {
         fos.close();
 
 
-        FileWriter fileWriter = new FileWriter(exitPath + "/good.txt");
+        FileWriter fileWriter = new FileWriter(exitPath + "/MD5.txt");
         PrintWriter printWriter = new PrintWriter(fileWriter);
-        printWriter.print("Well done");
+        printWriter.print(CounterMD5.countMD5(exitPath+ "/" + fileToZip.getName() +".zip"));
         printWriter.close();
     }
      void zipFile(File fileToZip, String fileName, ZipOutputStream zipOut) throws IOException {
